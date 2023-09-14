@@ -21,12 +21,17 @@ namespace Throwing_Boxes
                 _spriteRenderer.flipX = true;
             }
             
-            _animator.SetTrigger("Run");
+            _animator.SetFloat("Speed", 1);
         }
 
         public void IdlePlay()
         {
-            _animator.SetTrigger("Idle");
+            _animator.SetFloat("Speed", 0);
+        }
+
+        public void JumpPlay()
+        {
+            _animator.SetTrigger("Jump");
         }
     }
 }

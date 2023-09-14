@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Throwing_Boxes
 {
@@ -25,6 +26,33 @@ namespace Throwing_Boxes
         {
             foreach (var pair in _windows)
                 pair.Value.Hide();
+        }
+
+        public bool IsShow(WindowType type)
+        {
+            foreach (var pair in _windows)
+            {
+                if (pair.Key == type)
+                {
+                    return pair.Value.gameObject.activeSelf;
+                }
+            }
+
+            throw new Exception($"Окно {type} не найдено");
+        }
+
+        public void Hide(WindowType type)
+        {
+            foreach (var pair in _windows)
+            {
+                if (pair.Key == type)
+                {
+                    pair.Value.Hide();
+                    return;
+                }
+            }
+
+            throw new Exception($"Окно {type} не найдено");
         }
     }
 }

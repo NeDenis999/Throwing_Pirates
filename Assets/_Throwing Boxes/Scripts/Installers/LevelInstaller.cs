@@ -12,6 +12,15 @@ namespace Throwing_Boxes
         [SerializeField]
         private List<QuestCondition> _questConditions;
         
+        [SerializeField]
+        private HeroUpgradesManager _heroUpgradesManager;
+        
+        [SerializeField]
+        private MoneyBank _moneyBank;
+
+        [SerializeField]
+        private UIManager _uiManager;
+        
         public override void InstallBindings()
         {
             BindFromInstance<PlayerModel>(_playerModel);
@@ -19,8 +28,11 @@ namespace Throwing_Boxes
             foreach (var questCondition in _questConditions)
             {
                 Container.Inject(questCondition);
-                
             }
+            
+            BindFromInstance<IHeroUpgradesManager>(_heroUpgradesManager);
+            BindFromInstance<IMoneyBank>(_moneyBank);
+            BindFromInstance(_uiManager);
         }
 
         private void BindFromInstance<T>(T instance)

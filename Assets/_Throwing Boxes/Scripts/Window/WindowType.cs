@@ -3,6 +3,8 @@
     public enum WindowType : byte
     {
         Gameplay,
-        Dialog
+        Dialog,
+        Setting,
+        UpdateLevel,
     }
 }

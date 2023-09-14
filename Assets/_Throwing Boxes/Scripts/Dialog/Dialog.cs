@@ -5,20 +5,20 @@ using UnityEngine;
 namespace Throwing_Boxes
 {
     [CreateAssetMenu(fileName = "Dialog", menuName = "Configs/Dialog", order = 56)]
-    public class Dialog : ScriptableObject, ISerializationCallbackReceiver
+    public class Dialog : ScriptableObject//, ISerializationCallbackReceiver
     {
         public List<DialogNode> RootNodes { get; private set; }
 
-        [HideInInspector]
+        //[HideInInspector]
         public int NextUniqueId;
 
         //[HideInInspector]
         //public SimpleTransform2D EditorTransform = new SimpleTransform2D();
         
-        [HideInInspector]
-        public List<DialogNode> Nodes;
+        //[HideInInspector]
+        public DialogNode[] Nodes = new DialogNode[10];
         
-        public void OnBeforeSerialize()
+        /*public void OnBeforeSerialize()
         {
             if (Nodes != null)
             {
@@ -33,14 +33,14 @@ namespace Throwing_Boxes
                     {
                         foreach (var next in node.Next)
                             node.NextIds.Add(next.UniqueId);
-                    }*/
+                    }
                 }
             }
         }
 
         public void OnAfterDeserialize()
         {
-            throw new System.NotImplementedException();
-        }
+            //throw new System.NotImplementedException();
+        }*/
     }
 }

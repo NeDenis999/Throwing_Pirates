@@ -4,13 +4,13 @@ namespace Throwing_Boxes
 {
     public class BaseWindow : MonoBehaviour
     {
-        public void Show()
+        public virtual void Show()
         {
             gameObject.SetActive(true);
             OnShow();
         }
 
-        public void Hide()
+        public virtual void Hide()
         {
             gameObject.SetActive(false);
             OnHide();

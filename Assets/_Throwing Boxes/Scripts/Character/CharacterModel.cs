@@ -6,22 +6,31 @@ using UnityEngine.InputSystem;
 
 namespace Throwing_Boxes
 {
-    public class CharacterModel : MonoBehaviour, IGrable
+    public abstract class CharacterModel : MonoBehaviour, IGrable
     {
-        [SerializeField]
-        private Movement _movement;
+        public event Action<float> HealthUpdate;
         
         [SerializeField]
-        private Grabbing _grabbing;
+        [Tooltip("Компонент перемещения")]
+        private Movement _movement;
 
         [SerializeField]
         private CharacterView _view;
-        
-        private Vector2ReactiveProperty _inputDirection = new();
 
+        [SerializeField]
+        //[Randomize(1f, 100f)]
+        private float _health;
+        
+        [SerializeField]
+        private float _damage;
+        
+        private Vector2ReactiveProperty _moveDirection = new();
+
+        public float GetHealth => _health;
+        
         private void Awake()
         {
-            _inputDirection.Subscribe(direction =>
+            _moveDirection.Subscribe(direction =>
             {
                 if (direction == Vector2.zero)
                 {
@@ -36,34 +45,27 @@ namespace Throwing_Boxes
 
         private void Update()
         {
-            if (_inputDirection.Value != Vector2.zero)
-                _movement.Move(_inputDirection.Value);
+            if (_moveDirection.Value != Vector2.zero)
+                _movement.Move(_moveDirection.Value);
         }
 
-        public void GrableOnPerformed(InputAction.CallbackContext obj)
-        {
-            if (_grabbing.TryGrab(out var box))
-            {
+        public abstract void GrableOnPerformed(InputAction.CallbackContext obj);
 
-            }
-        }
-        
-        public void DropOnPerformed(InputAction.CallbackContext obj)
-        {
-            if (_grabbing.TryDrop())
-            {
-
-            }
-        }
+        public abstract void DropOnPerformed(InputAction.CallbackContext obj);
         
         public void MovementOnPerformed(InputAction.CallbackContext context)
         {
-            _inputDirection.Value = context.ReadValue<Vector2>();
+            _moveDirection.Value = context.ReadValue<Vector2>();
         }
         
         public void MovementOnCanceled(InputAction.CallbackContext obj)
         {
-            _inputDirection.Value = Vector2.zero;
+            _moveDirection.Value = Vector2.zero;
+        }
+        
+        public void JumpOnPerformed(InputAction.CallbackContext obj)
+        {
+            _view.JumpPlay();
         }
         
         public void Grable()
@@ -75,6 +77,8 @@ namespace Throwing_Boxes
         {
             await Task.Delay(500);
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            
+            await Task.Delay(500);
             _view.transform.eulerAngles = new Vector3(0, 0, 0);
         }
 
@@ -82,6 +86,22 @@ namespace Throwing_Boxes
         {
             await Task.Delay(500);
             Lay();
+        }
+        
+        public void SetSpeed(float speed)
+        {
+            _movement.Speed = speed;
+        }
+        
+        public void SetHealth(float health)
+        {
+            _health = health;
+            HealthUpdate?.Invoke(_health);
+        }
+        
+        public void SetDamage(float damage)
+        {
+            _damage= damage;
         }
     }
 }
