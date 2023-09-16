@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Throwing_Boxes
@@ -16,26 +17,42 @@ namespace Throwing_Boxes
         [SerializeField]
         private TextMeshProUGUI _titleText;
         
+        [SerializeField]
+        private TextMeshProUGUI _statusText;
+        
+        [SerializeField]
+        private Button _button;
+        
         private ISkillManager _skillManager;
-        private List<SkillView> _skillViews;
+        private List<SkillView> _skillViews = new();
+        private List<SkillViewModel> _skillViewModels = new();
+        private SkillViewModel _selectSkillViewModel;
+        private DiContainer _container;
+        private PlayerModel _playerModel;
 
         [Inject]
-        private void Construct(ISkillManager skillManager)
+        private void Construct(ISkillManager skillManager, DiContainer container, PlayerModel playerModel)
         {
             _skillManager = skillManager;
+            _container = container;
+            _playerModel = playerModel;
         }
         
         public void Show()
         {
             gameObject.SetActive(true);
             CreateUpgrades();
-            SelectSkillView(_skillViews[0]);
+            SelectSkillViewModel(_skillViewModels[0]);
+            
+            _button.onClick.AddListener(OpenSkill);
         }
 
         public void Hide()
         {
             DestroyUpgrades();
             gameObject.SetActive(false);
+            
+            _button.onClick.RemoveListener(OpenSkill);
         }
 
         private void CreateUpgrades()
@@ -44,17 +61,26 @@ namespace Throwing_Boxes
             var count = skills.Length;
 
             _skillViews = new List<SkillView>();
+            _skillViewModels = new List<SkillViewModel>();
 
             for (int i = 0; i < count; i++)
             {
                 var view = Instantiate(_skillPrefab, _viewsContainer);
-                view.Initialize(this, skills[i]);
                 _skillViews.Add(view);
+                
+                var model = skills[i];
+                var viewModel = new SkillViewModel(view, model);
+                
+                viewModel.Initialize(this, _playerModel);
+                _skillViewModels.Add(viewModel);
             }
         }
         
         private void DestroyUpgrades()
         {
+            if (_skillViews == null)
+                return;
+            
             var count = _skillViews.Count;
 
             for (int i = 0; i < count; i++)
@@ -64,21 +90,38 @@ namespace Throwing_Boxes
             }
         }
 
-        public void SelectSkillView(SkillView selectSkillView)
+        public void SelectSkillViewModel(SkillViewModel selectSkillView)
         {
-            foreach (var skillView in _skillViews)
+            foreach (var skillViewModel in _skillViewModels)
             {
-                if (skillView == selectSkillView)
+                if (skillViewModel == selectSkillView)
                 {
-                    skillView.Select();
+                    skillViewModel.Select();
+                    _selectSkillViewModel = skillViewModel;
+
+                    if (!skillViewModel.IsOpen)
+                    {
+                        _statusText.text = "Взять";
+                        _button.interactable = true;
+                    }
+                    else
+                    {
+                        _statusText.text = "Открыт";
+                        _button.interactable = false;
+                    }
                 }
                 else
                 {
-                    skillView.Deselect();
+                    skillViewModel.Deselect();
                 }
             }
 
             _titleText.text = selectSkillView.GetTitle();
+        }
+
+        private void OpenSkill()
+        {
+            _selectSkillViewModel.Open();
         }
     }
 }

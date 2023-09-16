@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Throwing_Boxes
 {
@@ -14,47 +15,39 @@ namespace Throwing_Boxes
         private Image _frameIcon;
 
         [SerializeField]
+        private Image _blockImage;
+
+        [SerializeField]
         private Sprite _frameSelectSprite;
         
         [SerializeField]
-        private Sprite _frameDiselectSprite;
-
-        [SerializeField]
-        private Button _button;
-
-        private SkillViewManager _skillViewManager;
-        private Skill _skill;
-
-        private void OnEnable()
-        {
-            _button.onClick.AddListener(() => _skillViewManager.SelectSkillView(this));
-        }
-
-        private void OnDisable()
-        {
-            _button.onClick.RemoveListener(() => _skillViewManager.SelectSkillView(this));
-        }
-
-        public void Initialize(SkillViewManager skillViewManager, Skill skill)
-        {
-            _skill = skill;
-            _skillViewManager = skillViewManager;
-            _icon.sprite = skill.Icon;
-        }
-
-        public void Select()
+        private Sprite _frameDeselectSprite;
+        
+        public Button Button;
+        
+        public void SetFrameIconSelect()
         {
             _frameIcon.sprite = _frameSelectSprite;
         }
-
-        public void Deselect()
+        
+        public void SetFrameIconDeselect()
         {
-            _frameIcon.sprite = _frameDiselectSprite;
+            _frameIcon.sprite = _frameDeselectSprite;
+        }
+        
+        public void SetIcon(Sprite icon)
+        {
+            _icon.sprite = icon;
         }
 
-        public string GetTitle()
+        public void ShowBlockImage()
         {
-            return _skill.Title;
+            _blockImage.gameObject.SetActive(true);
+        }
+        
+        public void HideBlockImage()
+        {
+            _blockImage.gameObject.SetActive(false);
         }
     }
 }

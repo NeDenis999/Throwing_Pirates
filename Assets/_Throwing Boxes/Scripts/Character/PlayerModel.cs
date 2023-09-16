@@ -11,7 +11,7 @@ namespace Throwing_Boxes
         [SerializeField]
         private Grabbing _grabbing;
 
-        [NonSerialized]
+        [SerializeField]
         public List<DamageSkill> DamageSkills = new();
 
         public override void AdditionalActionOnPerformed(InputAction.CallbackContext obj)

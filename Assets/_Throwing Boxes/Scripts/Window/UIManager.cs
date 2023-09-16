@@ -7,6 +7,11 @@ namespace Throwing_Boxes
     {
         [SerializeField] private SerializablePair<WindowType, BaseWindow>[] _windows;
 
+        private void Start()
+        {
+            Show(WindowType.Gameplay);
+        }
+
         public void Show(WindowType type, object args = null, bool hideOther = true)
         {
             if (hideOther)
