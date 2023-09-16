@@ -1,28 +1,30 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Throwing_Boxes
 {
     public class PlayerModel : CharacterModel
     {
-                
         [SerializeField]
         private Grabbing _grabbing;
 
-        public override void GrableOnPerformed(InputAction.CallbackContext obj)
+        public override void AdditionalActionOnPerformed(InputAction.CallbackContext obj)
         {
             if (_grabbing.TryGrab(out var box))
             {
-
+                _view.GrablePlay();
             }
         }
         
-        public override void DropOnPerformed(InputAction.CallbackContext obj)
+        public override void MainActionOnPerformed(InputAction.CallbackContext obj)
         {
             if (_grabbing.TryDrop())
             {
-
+                _view.NotGrablePlay();
+            }
+            else
+            {
+                _view.HitPlay();
             }
         }
     }

@@ -37,7 +37,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Grable"",
+                    ""name"": ""AdditionalAction"",
                     ""type"": ""Button"",
                     ""id"": ""442167b0-e78a-4901-ab73-408634e292a5"",
                     ""expectedControlType"": ""Button"",
@@ -46,7 +46,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Drop"",
+                    ""name"": ""MainAction"",
                     ""type"": ""Button"",
                     ""id"": ""9e529aa0-098a-4735-a7f0-98d7b966e9d6"",
                     ""expectedControlType"": ""Button"",
@@ -145,7 +145,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Grable"",
+                    ""action"": ""AdditionalAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -156,7 +156,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Drop"",
+                    ""action"": ""MainAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -201,8 +201,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
-        m_Player_Grable = m_Player.FindAction("Grable", throwIfNotFound: true);
-        m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
+        m_Player_AdditionalAction = m_Player.FindAction("AdditionalAction", throwIfNotFound: true);
+        m_Player_MainAction = m_Player.FindAction("MainAction", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Upgrades = m_Player.FindAction("Upgrades", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
@@ -268,8 +268,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Movement;
-    private readonly InputAction m_Player_Grable;
-    private readonly InputAction m_Player_Drop;
+    private readonly InputAction m_Player_AdditionalAction;
+    private readonly InputAction m_Player_MainAction;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Upgrades;
     private readonly InputAction m_Player_Menu;
@@ -278,8 +278,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
-        public InputAction @Grable => m_Wrapper.m_Player_Grable;
-        public InputAction @Drop => m_Wrapper.m_Player_Drop;
+        public InputAction @AdditionalAction => m_Wrapper.m_Player_AdditionalAction;
+        public InputAction @MainAction => m_Wrapper.m_Player_MainAction;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Upgrades => m_Wrapper.m_Player_Upgrades;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
@@ -295,12 +295,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @Grable.started += instance.OnGrable;
-            @Grable.performed += instance.OnGrable;
-            @Grable.canceled += instance.OnGrable;
-            @Drop.started += instance.OnDrop;
-            @Drop.performed += instance.OnDrop;
-            @Drop.canceled += instance.OnDrop;
+            @AdditionalAction.started += instance.OnAdditionalAction;
+            @AdditionalAction.performed += instance.OnAdditionalAction;
+            @AdditionalAction.canceled += instance.OnAdditionalAction;
+            @MainAction.started += instance.OnMainAction;
+            @MainAction.performed += instance.OnMainAction;
+            @MainAction.canceled += instance.OnMainAction;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
@@ -317,12 +317,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @Grable.started -= instance.OnGrable;
-            @Grable.performed -= instance.OnGrable;
-            @Grable.canceled -= instance.OnGrable;
-            @Drop.started -= instance.OnDrop;
-            @Drop.performed -= instance.OnDrop;
-            @Drop.canceled -= instance.OnDrop;
+            @AdditionalAction.started -= instance.OnAdditionalAction;
+            @AdditionalAction.performed -= instance.OnAdditionalAction;
+            @AdditionalAction.canceled -= instance.OnAdditionalAction;
+            @MainAction.started -= instance.OnMainAction;
+            @MainAction.performed -= instance.OnMainAction;
+            @MainAction.canceled -= instance.OnMainAction;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
@@ -352,8 +352,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnGrable(InputAction.CallbackContext context);
-        void OnDrop(InputAction.CallbackContext context);
+        void OnAdditionalAction(InputAction.CallbackContext context);
+        void OnMainAction(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnUpgrades(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);

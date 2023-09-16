@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace Throwing_Boxes
 {
-    public abstract class CharacterModel : MonoBehaviour, IGrable
+    public abstract class CharacterModel : MonoBehaviour
     {
         public event Action<float> HealthUpdate;
         
@@ -15,7 +15,7 @@ namespace Throwing_Boxes
         private Movement _movement;
 
         [SerializeField]
-        private CharacterView _view;
+        protected CharacterView _view;
 
         [SerializeField]
         //[Randomize(1f, 100f)]
@@ -49,9 +49,9 @@ namespace Throwing_Boxes
                 _movement.Move(_moveDirection.Value);
         }
 
-        public abstract void GrableOnPerformed(InputAction.CallbackContext obj);
+        public abstract void AdditionalActionOnPerformed(InputAction.CallbackContext obj);
 
-        public abstract void DropOnPerformed(InputAction.CallbackContext obj);
+        public abstract void MainActionOnPerformed(InputAction.CallbackContext obj);
         
         public void MovementOnPerformed(InputAction.CallbackContext context)
         {
@@ -67,27 +67,7 @@ namespace Throwing_Boxes
         {
             _view.JumpPlay();
         }
-        
-        public void Grable()
-        {
-            _view.transform.eulerAngles = new Vector3(0, 0, 90);
-        }
 
-        public async void Lay()
-        {
-            await Task.Delay(500);
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            
-            await Task.Delay(500);
-            _view.transform.eulerAngles = new Vector3(0, 0, 0);
-        }
-
-        public async void Drop()
-        {
-            await Task.Delay(500);
-            Lay();
-        }
-        
         public void SetSpeed(float speed)
         {
             _movement.Speed = speed;
@@ -102,6 +82,16 @@ namespace Throwing_Boxes
         public void SetDamage(float damage)
         {
             _damage= damage;
+        }
+
+        public void Aim()
+        {
+            _view.AimPlay();
+        }
+
+        public void AdditionalActionOnCanceled(InputAction.CallbackContext obj)
+        {
+            _view.AimStop();
         }
     }
 }

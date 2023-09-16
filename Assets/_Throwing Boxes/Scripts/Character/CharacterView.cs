@@ -5,7 +5,7 @@ namespace Throwing_Boxes
     public class CharacterView : MonoBehaviour
     {
         [SerializeField]
-        private SpriteRenderer _spriteRenderer;
+        private Transform _carcass;
         
         [SerializeField]
         private Animator _animator;
@@ -14,11 +14,11 @@ namespace Throwing_Boxes
         {
             if (direction.x > 0)
             {
-                _spriteRenderer.flipX = false;
+                _carcass.localScale = new Vector3(1, 1, 1);
             }
             else if (direction.x < 0)
             {
-                _spriteRenderer.flipX = true;
+                _carcass.localScale = new Vector3(-1, 1, 1);
             }
             
             _animator.SetFloat("Speed", 1);
@@ -32,6 +32,31 @@ namespace Throwing_Boxes
         public void JumpPlay()
         {
             _animator.SetTrigger("Jump");
+        }
+
+        public void GrablePlay()
+        {
+            _animator.SetTrigger("Grable");
+        }
+
+        public void NotGrablePlay()
+        {
+            _animator.SetTrigger("NotGrable");
+        }
+
+        public void HitPlay()
+        {
+            _animator.SetTrigger("Hit");
+        }
+
+        public void AimPlay()
+        {
+            _animator.SetBool("IsAim", true);
+        }
+
+        public void AimStop()
+        {
+            _animator.SetBool("IsAim", false);
         }
     }
 }
