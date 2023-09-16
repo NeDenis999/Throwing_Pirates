@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Throwing_Boxes
 {
-    public class UpgradeViewManager : BaseWindow
+    public class UpgradeViewManager : MonoBehaviour
     {
         [SerializeField]
         private UpgradeView _viewPrefab;
@@ -24,16 +24,16 @@ namespace Throwing_Boxes
             _upgradesManager = upgradesManager;
         }
         
-        public override void Show()
+        public void Show()
         {
-            base.Show();
+            gameObject.SetActive(true);
             CreateUpgrades();
         }
         
-        public override void Hide()
+        public void Hide()
         {
             DestroyUpgrades();
-            base.Hide();
+            gameObject.SetActive(false);
         }
 
         private void CreateUpgrades()

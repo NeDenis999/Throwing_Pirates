@@ -2,7 +2,7 @@
 
 namespace Throwing_Boxes
 {
-    [CreateAssetMenu(menuName = "Configs/Inventory Item")]
+    [CreateAssetMenu(fileName = "Inventory Item", menuName = "Configs/Inventory Item", order = 60)]
     public class InventoryItem : ScriptableObject
     {
         public InventoryCategory Category;

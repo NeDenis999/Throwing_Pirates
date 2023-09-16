@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Throwing_Boxes
 {
-    [CreateAssetMenu(fileName = "HeroUpgradeCatalog", menuName = "Configs/HeroUpgradeCatalog", order = 56)]
+    [CreateAssetMenu(fileName = "HeroUpgradeCatalog", menuName = "Configs/Upgrades/HeroUpgradeCatalog", order = 56)]
     public class HeroUpgradeCatalog : ScriptableObject
     {
         public List<UpgradeConfig> Configs;

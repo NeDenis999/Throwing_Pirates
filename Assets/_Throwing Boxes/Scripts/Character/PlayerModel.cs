@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Throwing_Boxes
@@ -7,6 +10,9 @@ namespace Throwing_Boxes
     {
         [SerializeField]
         private Grabbing _grabbing;
+
+        [NonSerialized]
+        public List<DamageSkill> DamageSkills = new();
 
         public override void AdditionalActionOnPerformed(InputAction.CallbackContext obj)
         {

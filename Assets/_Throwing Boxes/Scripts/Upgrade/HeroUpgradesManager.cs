@@ -14,6 +14,7 @@ namespace Throwing_Boxes
         private SpeedUpgrade _speedUpgrade;
         private HealthUpgrade _healthUpgrade;
         private DamageUpgrade _damageUpgrade;
+        private List<HeroUpgrade> _upgrades = new List<HeroUpgrade>();
         private PlayerModel _playerModel;
         private IMoneyBank _moneyBank;
 
@@ -28,6 +29,7 @@ namespace Throwing_Boxes
         {
             _speedUpgrade = new SpeedUpgrade(_catalog.GetConfig<SpeedUpgradeConfig>());
             _speedUpgrade.Initialize(_playerModel, 0);
+            _upgrades.Add(_speedUpgrade);
             
             _healthUpgrade = new HealthUpgrade(_catalog.GetConfig<HealthUpgradeConfig>());
             _healthUpgrade.Initialize(_playerModel, 0);
@@ -63,5 +65,12 @@ namespace Throwing_Boxes
             upgrades[2] = _damageUpgrade;
             return upgrades;
         }
+
+        /*private void RegisterUpgrade<T, F>() where T : SpeedUpgrade where F : SpeedUpgradeConfig
+        {
+            var upgrade = new T(_catalog.GetConfig<F>());
+            upgrade.Initialize(_playerModel, 0);
+            _upgrades.Add(upgrade);
+        }*/
     }
 }

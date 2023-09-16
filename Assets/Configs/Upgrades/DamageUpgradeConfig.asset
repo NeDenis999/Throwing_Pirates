@@ -16,7 +16,7 @@ MonoBehaviour:
   MaxLevel: 9
   Metadata:
     Title: Damage
-    Icon: {fileID: 21300000, guid: 501233c9f1da3ef44b4ff7115f564d9b, type: 3}
+    Icon: {fileID: -891096086, guid: 3c9ca340ca81aa046b31ffd1f3193d53, type: 3}
   PriceTable:
     Value: 3
     BasePowerPrice: 5

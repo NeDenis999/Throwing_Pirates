@@ -46,6 +46,7 @@ namespace Throwing_Boxes
         {
             if (_upgradesManager.CanLevelUp(_upgrade))
             {
+                _moneyBank.Money -= _upgrade.NextPrice;
                 _upgradesManager.LevelUp(_upgrade);
             }
         }

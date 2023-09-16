@@ -20,6 +20,9 @@ namespace Throwing_Boxes
 
         [SerializeField]
         private UIManager _uiManager;
+
+        [SerializeField]
+        private SkillManager _skillManager;
         
         public override void InstallBindings()
         {
@@ -33,6 +36,7 @@ namespace Throwing_Boxes
             BindFromInstance<IHeroUpgradesManager>(_heroUpgradesManager);
             BindFromInstance<IMoneyBank>(_moneyBank);
             BindFromInstance(_uiManager);
+            BindFromInstance<ISkillManager>(_skillManager);
         }
 
         private void BindFromInstance<T>(T instance)

@@ -2,7 +2,7 @@
 
 namespace Throwing_Boxes
 {
-    [CreateAssetMenu(fileName = "DamageUpgradeConfig", menuName = "Configs/DamageUpgradeConfig", order = 58)]
+    [CreateAssetMenu(fileName = "DamageUpgradeConfig", menuName = "Configs/Upgrades/DamageUpgradeConfig", order = 59)]
     public class DamageUpgradeConfig : UpgradeConfig
     {
         public DamageUpgradeTable DamageTable;

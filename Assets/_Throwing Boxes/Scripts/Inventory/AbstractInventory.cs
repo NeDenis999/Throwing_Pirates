@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Throwing_Boxes
 {
     public abstract class AbstractInventory : MonoBehaviour, IInventory
     {
-        [SerializeField]
+        [Serializable]
         public struct InitialItem
         {
             public InventoryItem Item;

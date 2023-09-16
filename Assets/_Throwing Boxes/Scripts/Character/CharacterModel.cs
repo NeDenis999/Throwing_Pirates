@@ -27,7 +27,8 @@ namespace Throwing_Boxes
         private Vector2ReactiveProperty _moveDirection = new();
 
         public float GetHealth => _health;
-        
+        public bool IsBurn;
+
         private void Awake()
         {
             _moveDirection.Subscribe(direction =>
@@ -92,6 +93,12 @@ namespace Throwing_Boxes
         public void AdditionalActionOnCanceled(InputAction.CallbackContext obj)
         {
             _view.AimStop();
+        }
+        
+        public void Damage(float damage)
+        {
+            _health -= damage;
+            HealthUpdate?.Invoke(_health);
         }
     }
 }

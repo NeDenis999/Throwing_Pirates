@@ -16,7 +16,7 @@ MonoBehaviour:
   MaxLevel: 7
   Metadata:
     Title: Health
-    Icon: {fileID: 21300000, guid: 61ac40b257b3a994f841856ad38b2b6b, type: 3}
+    Icon: {fileID: -1701380096, guid: 3c9ca340ca81aa046b31ffd1f3193d53, type: 3}
   PriceTable:
     Value: 7
     BasePowerPrice: 5

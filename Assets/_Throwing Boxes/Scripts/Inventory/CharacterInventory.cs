@@ -2,8 +2,8 @@
 
 namespace Throwing_Boxes
 {
-    public class CharacterInventory
+    public class CharacterInventory : AbstractInventory
     {
-        public List<int> InitialInventory;
+        //public List<InventoryItem> InitialInventory => m_initialInventory;
     }
 }
