@@ -14,6 +14,7 @@ namespace Throwing_Boxes
 
         private PlayerInputActions _playerInputActions;
         private CharacterModel _previousCharacterModel;
+        private CharacterInventory _inventory;
         private UIManager _uiManager;
 
         [Inject]
@@ -39,6 +40,12 @@ namespace Throwing_Boxes
                     _playerInputActions.Player.Jump.performed -= _previousCharacterModel.JumpOnPerformed;
                     _playerInputActions.Player.Upgrades.performed -= OpenUpdateLevel;
                     _playerInputActions.Player.Menu.performed -= OpenMenu;
+                    _playerInputActions.Player.InventorySlot1.performed -= _previousCharacterModel.Inventory.InventorySlot1;
+                    _playerInputActions.Player.InventorySlot2.performed -= _previousCharacterModel.Inventory.InventorySlot2;
+                    _playerInputActions.Player.InventorySlot3.performed -= _characterModel.Value.Inventory.InventorySlot3;
+                    _playerInputActions.Player.InventorySlot4.performed -= _characterModel.Value.Inventory.InventorySlot4;
+                    _playerInputActions.Player.InventorySlot5.performed -= _characterModel.Value.Inventory.InventorySlot5;
+                    _playerInputActions.Player.DropItem.performed -= _characterModel.Value.Inventory.DropItem;
                 }
                 
                 _playerInputActions.Player.Movement.performed += _characterModel.Value.MovementOnPerformed;
@@ -49,6 +56,12 @@ namespace Throwing_Boxes
                 _playerInputActions.Player.Jump.performed += _characterModel.Value.JumpOnPerformed;
                 _playerInputActions.Player.Upgrades.performed += OpenUpdateLevel;
                 _playerInputActions.Player.Menu.performed += OpenMenu;
+                _playerInputActions.Player.InventorySlot1.performed += _characterModel.Value.Inventory.InventorySlot1;
+                _playerInputActions.Player.InventorySlot2.performed += _characterModel.Value.Inventory.InventorySlot2;
+                _playerInputActions.Player.InventorySlot3.performed += _characterModel.Value.Inventory.InventorySlot3;
+                _playerInputActions.Player.InventorySlot4.performed += _characterModel.Value.Inventory.InventorySlot4;
+                _playerInputActions.Player.InventorySlot5.performed += _characterModel.Value.Inventory.InventorySlot5;
+                _playerInputActions.Player.DropItem.performed += _characterModel.Value.Inventory.DropItem;
 
                 _previousCharacterModel = _characterModel.Value;
             });

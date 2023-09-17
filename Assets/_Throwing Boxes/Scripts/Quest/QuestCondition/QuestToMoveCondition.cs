@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Throwing_Boxes
 {
-    [CreateAssetMenu(fileName = "QuestToMoveCondition", menuName = "Configs/QuestCondition/QuestToMoveCondition", order = 52)]
+    [CreateAssetMenu(fileName = "QuestToMoveCondition", menuName = "Configs/Quest/QuestCondition/Quest To Move Condition", order = 52)]
     public class QuestToMoveCondition : QuestCondition
     {
         public Vector2 TargetPoint;

@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Throwing_Boxes
 {
-    [CreateAssetMenu(fileName = "QuestConditionsInstaller", menuName = "Configs/QuestConditionsInstaller", order = 55)]
+    [CreateAssetMenu(fileName = "QuestConditionsInstaller", menuName = "Configs/Quest/QuestConditionsInstaller", order = 55)]
     public class QuestConditionsInstaller : ScriptableObjectInstaller
     {
         [SerializeField]

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f10b49bf50644dab22ab20464435cd4, type: 3}
-  m_Name: Pistol
+  m_Name: Saber
   m_EditorClassIdentifier: 
   Category: {fileID: 11400000, guid: 1e2f05cfdd066114293b66b237301cea, type: 2}
-  Title: Pistol
-  Description: Piy-piy
-  Icon: {fileID: 2101799758, guid: ba41e3070ff63ed4589a879db2ea4960, type: 3}
-  Prefab: {fileID: 8575889816463538907, guid: 8ac3747c08e76084e9851f34a5afb2c0, type: 3}
+  Title: Saber
+  Description: Pirate saber
+  Icon: {fileID: 676514869, guid: ba41e3070ff63ed4589a879db2ea4960, type: 3}
+  Prefab: {fileID: 2186435664852376391, guid: f0c36e8a21e1cd340ad1248d875f0b69, type: 3}

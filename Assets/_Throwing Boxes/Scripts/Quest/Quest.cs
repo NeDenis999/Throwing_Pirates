@@ -10,7 +10,7 @@ namespace Throwing_Boxes
         Unknown
     }
     
-    [CreateAssetMenu(fileName = "Quest", menuName = "Configs/Quest", order = 51)]
+    [CreateAssetMenu(fileName = "Quest", menuName = "Configs/Quest/Quest", order = 51)]
     public class Quest : ScriptableObject
     {
         public string Name;

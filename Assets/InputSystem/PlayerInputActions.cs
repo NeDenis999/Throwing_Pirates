@@ -80,6 +80,60 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InventorySlot1"",
+                    ""type"": ""Button"",
+                    ""id"": ""a361e6db-0416-4c10-917e-f45b2a3b8224"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InventorySlot2"",
+                    ""type"": ""Button"",
+                    ""id"": ""bffedea9-78c6-4560-8c78-8ce0d81da9db"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InventorySlot3"",
+                    ""type"": ""Button"",
+                    ""id"": ""cc426c57-32cc-4fe1-b214-115277bc6f53"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InventorySlot4"",
+                    ""type"": ""Button"",
+                    ""id"": ""aabaf592-65b2-422b-ad30-4bd4db712ad6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InventorySlot5"",
+                    ""type"": ""Button"",
+                    ""id"": ""979d16a7-d9e3-4749-aab1-b875f0acd38a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DropItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""8b5a46ce-5087-4fd6-b954-00e64a1e4033"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +246,72 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a798a88c-5be2-4fb4-8270-b632a815e9c6"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InventorySlot1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4d938ea-4834-41dd-983b-c8a3b33dca63"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InventorySlot2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e00011ab-82cc-4453-a426-f0f572a70411"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InventorySlot3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f27330a5-0119-4839-a13c-be2a455b7199"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InventorySlot4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2786b496-76eb-4473-bcf8-92889c06bb89"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InventorySlot5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""904eceb7-538b-4a2f-98cd-55d54fbe52bf"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DropItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -206,6 +326,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Upgrades = m_Player.FindAction("Upgrades", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
+        m_Player_InventorySlot1 = m_Player.FindAction("InventorySlot1", throwIfNotFound: true);
+        m_Player_InventorySlot2 = m_Player.FindAction("InventorySlot2", throwIfNotFound: true);
+        m_Player_InventorySlot3 = m_Player.FindAction("InventorySlot3", throwIfNotFound: true);
+        m_Player_InventorySlot4 = m_Player.FindAction("InventorySlot4", throwIfNotFound: true);
+        m_Player_InventorySlot5 = m_Player.FindAction("InventorySlot5", throwIfNotFound: true);
+        m_Player_DropItem = m_Player.FindAction("DropItem", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -273,6 +399,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Upgrades;
     private readonly InputAction m_Player_Menu;
+    private readonly InputAction m_Player_InventorySlot1;
+    private readonly InputAction m_Player_InventorySlot2;
+    private readonly InputAction m_Player_InventorySlot3;
+    private readonly InputAction m_Player_InventorySlot4;
+    private readonly InputAction m_Player_InventorySlot5;
+    private readonly InputAction m_Player_DropItem;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -283,6 +415,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Upgrades => m_Wrapper.m_Player_Upgrades;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
+        public InputAction @InventorySlot1 => m_Wrapper.m_Player_InventorySlot1;
+        public InputAction @InventorySlot2 => m_Wrapper.m_Player_InventorySlot2;
+        public InputAction @InventorySlot3 => m_Wrapper.m_Player_InventorySlot3;
+        public InputAction @InventorySlot4 => m_Wrapper.m_Player_InventorySlot4;
+        public InputAction @InventorySlot5 => m_Wrapper.m_Player_InventorySlot5;
+        public InputAction @DropItem => m_Wrapper.m_Player_DropItem;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -310,6 +448,24 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Menu.started += instance.OnMenu;
             @Menu.performed += instance.OnMenu;
             @Menu.canceled += instance.OnMenu;
+            @InventorySlot1.started += instance.OnInventorySlot1;
+            @InventorySlot1.performed += instance.OnInventorySlot1;
+            @InventorySlot1.canceled += instance.OnInventorySlot1;
+            @InventorySlot2.started += instance.OnInventorySlot2;
+            @InventorySlot2.performed += instance.OnInventorySlot2;
+            @InventorySlot2.canceled += instance.OnInventorySlot2;
+            @InventorySlot3.started += instance.OnInventorySlot3;
+            @InventorySlot3.performed += instance.OnInventorySlot3;
+            @InventorySlot3.canceled += instance.OnInventorySlot3;
+            @InventorySlot4.started += instance.OnInventorySlot4;
+            @InventorySlot4.performed += instance.OnInventorySlot4;
+            @InventorySlot4.canceled += instance.OnInventorySlot4;
+            @InventorySlot5.started += instance.OnInventorySlot5;
+            @InventorySlot5.performed += instance.OnInventorySlot5;
+            @InventorySlot5.canceled += instance.OnInventorySlot5;
+            @DropItem.started += instance.OnDropItem;
+            @DropItem.performed += instance.OnDropItem;
+            @DropItem.canceled += instance.OnDropItem;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -332,6 +488,24 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Menu.started -= instance.OnMenu;
             @Menu.performed -= instance.OnMenu;
             @Menu.canceled -= instance.OnMenu;
+            @InventorySlot1.started -= instance.OnInventorySlot1;
+            @InventorySlot1.performed -= instance.OnInventorySlot1;
+            @InventorySlot1.canceled -= instance.OnInventorySlot1;
+            @InventorySlot2.started -= instance.OnInventorySlot2;
+            @InventorySlot2.performed -= instance.OnInventorySlot2;
+            @InventorySlot2.canceled -= instance.OnInventorySlot2;
+            @InventorySlot3.started -= instance.OnInventorySlot3;
+            @InventorySlot3.performed -= instance.OnInventorySlot3;
+            @InventorySlot3.canceled -= instance.OnInventorySlot3;
+            @InventorySlot4.started -= instance.OnInventorySlot4;
+            @InventorySlot4.performed -= instance.OnInventorySlot4;
+            @InventorySlot4.canceled -= instance.OnInventorySlot4;
+            @InventorySlot5.started -= instance.OnInventorySlot5;
+            @InventorySlot5.performed -= instance.OnInventorySlot5;
+            @InventorySlot5.canceled -= instance.OnInventorySlot5;
+            @DropItem.started -= instance.OnDropItem;
+            @DropItem.performed -= instance.OnDropItem;
+            @DropItem.canceled -= instance.OnDropItem;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -357,5 +531,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnUpgrades(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
+        void OnInventorySlot1(InputAction.CallbackContext context);
+        void OnInventorySlot2(InputAction.CallbackContext context);
+        void OnInventorySlot3(InputAction.CallbackContext context);
+        void OnInventorySlot4(InputAction.CallbackContext context);
+        void OnInventorySlot5(InputAction.CallbackContext context);
+        void OnDropItem(InputAction.CallbackContext context);
     }
 }

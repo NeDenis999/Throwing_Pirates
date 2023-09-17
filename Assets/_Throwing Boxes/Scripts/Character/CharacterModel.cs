@@ -24,9 +24,18 @@ namespace Throwing_Boxes
         [SerializeField]
         private float _damage;
         
+        [SerializeField]
+        private CharacterInventory _inventory;
+
+        [SerializeField]
+        private Transform _weaponPoint;
+        
         private Vector2ReactiveProperty _moveDirection = new();
+        private GameObject _weapon;
 
         public float GetHealth => _health;
+        public CharacterInventory Inventory => _inventory;
+
         public bool IsBurn;
 
         private void Awake()
@@ -99,6 +108,18 @@ namespace Throwing_Boxes
         {
             _health -= damage;
             HealthUpdate?.Invoke(_health);
+        }
+
+        public void SetWeapon(GameObject weaponPrefab)
+        {
+            if (_weapon)
+                Destroy(_weapon);
+            
+            if (weaponPrefab == null)
+                return;
+            
+            var weapon = Instantiate(weaponPrefab, _weaponPoint);
+            _weapon = weapon;
         }
     }
 }

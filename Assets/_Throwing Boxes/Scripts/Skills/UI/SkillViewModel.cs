@@ -50,6 +50,7 @@ namespace Throwing_Boxes
             _skillView.HideBlockImage();
             _isBlock = false;
             _playerModel.DamageSkills.Add((DamageSkill)_skill);
+            _skillViewManager.SelectSkillViewModel(this);
         }
 
         public string GetTitle()

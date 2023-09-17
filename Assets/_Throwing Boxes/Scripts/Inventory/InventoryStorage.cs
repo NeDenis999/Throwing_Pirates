@@ -28,7 +28,7 @@ namespace Throwing_Boxes
             }
         }
 
-        private readonly SortedDictionary<InventoryItem, int> m_items = new SortedDictionary<InventoryItem, int>();
+        private readonly Dictionary<InventoryItem, int> m_items = new Dictionary<InventoryItem, int>();
 
         public event Action OnChanged;
         public int Count => m_items.Count;
@@ -69,9 +69,11 @@ namespace Throwing_Boxes
                 return false;
             }
 
-            if (!m_items.TryGetValue(item, out int count) || count < amount)
+            if (!m_items.TryGetValue(item, out int count) || count <= amount)
             {
-                
+                m_items.Remove(item);
+                OnChanged?.Invoke();
+                return true;
             }
             
             throw new NotImplementedException();

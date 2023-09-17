@@ -2,7 +2,7 @@
 
 namespace Throwing_Boxes
 {
-    [CreateAssetMenu(fileName = "QuestToMoveCondition", menuName = "Configs/QuestCondition/QuestInteractionCondition", order = 53)]
+    [CreateAssetMenu(fileName = "QuestToMoveCondition", menuName = "Configs/Quest/QuestCondition/Quest Interaction Condition", order = 53)]
     public class QuestInteractionCondition : QuestCondition
     {
         public override bool IsTrue()
