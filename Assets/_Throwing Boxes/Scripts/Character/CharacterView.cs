@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Throwing_Boxes
 {
@@ -34,6 +35,7 @@ namespace Throwing_Boxes
             _animator.SetTrigger("Jump");
         }
 
+        [Button]
         public void GrablePlay()
         {
             _animator.SetTrigger("Grable");

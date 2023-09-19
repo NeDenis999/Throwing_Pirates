@@ -1,4 +1,5 @@
 ﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Throwing_Boxes
@@ -11,10 +12,11 @@ namespace Throwing_Boxes
             public InventoryItem Item;
             public int Count;
         }
-
+        
         public IInventoryStorage Storage { get; private set; } = new InventoryStorage();
 
-        [SerializeField] private InitialItem[] m_initialInventory;
+        [SerializeField]
+        private InitialItem[] m_initialInventory;
 
         private void Awake()
         {

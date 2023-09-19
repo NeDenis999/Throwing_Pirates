@@ -1,14 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Sirenix.OdinInspector;
 using UniRx;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Throwing_Boxes
 {
-    public abstract class CharacterModel : MonoBehaviour
+    public abstract class CharacterModel : MonoBehaviour, IEntity
     {
         public event Action<float> HealthUpdate;
+        
+        [SerializeField]
+        private ListEntity entity = new();
         
         [SerializeField]
         [Tooltip("Компонент перемещения")]
@@ -51,6 +56,10 @@ namespace Throwing_Boxes
                     _view.MovePlay(direction);
                 }
             });
+            
+            Add(GetComponent<MoveAgent>());
+            Add(new Component_Transform(transform));
+            Add(new Component_MoveInDirection(new MoveInDirectionMotor()));
         }
 
         private void Update()
@@ -91,7 +100,7 @@ namespace Throwing_Boxes
         
         public void SetDamage(float damage)
         {
-            _damage= damage;
+            _damage = damage;
         }
 
         public void Aim()
@@ -120,6 +129,34 @@ namespace Throwing_Boxes
             
             var weapon = Instantiate(weaponPrefab, _weaponPoint);
             _weapon = weapon;
+        }
+
+        public T Get<T>()
+        {
+            try
+            {
+                return this.entity.Get<T>();
+            }
+            catch (EntityException exception)
+            {
+                Debug.LogError(exception.Message, this);
+                throw;
+            }
+        }
+
+        public bool TryGet<T>(out T element)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object[] GetAll()
+        {
+            throw new NotImplementedException();
+        }
+        
+        public void Add(object element)
+        {
+            this.entity.Add(element);
         }
     }
 }

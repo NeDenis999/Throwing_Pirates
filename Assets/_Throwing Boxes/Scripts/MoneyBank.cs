@@ -1,4 +1,5 @@
 ﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Throwing_Boxes
@@ -9,6 +10,8 @@ namespace Throwing_Boxes
 
         private int _money;
         
+        [ShowInInspector]
+        [ReadOnly]
         public int Money
         {
             get => _money;
